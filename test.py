@@ -7,7 +7,7 @@ import random
 def html_src(names):
 	
 	files = []
-	files = os.listdir("Cards\\")
+	files = os.listdir("\\\\bosch.com\\dfsrb\\DfsIN\\LOC\\Kor\\NE2\\ESV_Info\\36_ESX\\Common\\General_Information\\DASy\\09_TeamDetails\\ESX3BirthdayList\\Cards\\")
 	path = "\\\\bosch.com\\dfsrb\\DfsIN\\LOC\\Kor\\NE2\\ESV_Info\\36_ESX\\Common\\General_Information\\DASy\\09_TeamDetails\\ESX3BirthdayList\\Cards\\"+str(random.choice(files))
 
 	html_content = f'''
