@@ -17,8 +17,11 @@ def html_src(names):
 		<head> 
 		</head>
 		<body>
-			<h2 style ="font-family:'Comic Sans MS', cursive, sans-serif; color:#005cde; font-size:48px">Many many happy returns of the Day {names}</h2>
-				<img src = {path} ></img>
+			<h2 style ="font-family:'Comic Sans MS', cursive, sans-serif; color:#005cde; font-size:36px">Many many happy returns of the Day {names}</h2>
+
+			<div style="width:600; height:600; overflow:hidden;" >
+   				<img src={path} width="600" height="auto">
+			</div>
 
 		</body>
 	</html>'''
@@ -54,7 +57,24 @@ def getDataFrame():
 	names = names[:-4]
 	sub = f"Happy Birthday {names}"
 	body = html_src(names)
-	mail_func(to,"",sub,body)
+	if to == "":
+		print("No one has their birthday today")
+	else:
+		print(f"Today is the birthday of {names}")
+		print("Recipients in cc")
+		for i in cc.split(";"):
+			print(i)
+		while(True):
+			answer = input("Would you like to send the mail now (y/n)?")
+			if answer.lower() == 'y':
+				mail_func(to,cc,sub,body)
+				break
+			else:
+				answer = input("Sure to exit (y/n)?")
+				if answer.lower() == "y":
+					break
+				else:
+					pass
 	
 	 
 	
@@ -72,6 +92,7 @@ def mail_func(to,cc,sub,body):
 	# To attach a file to the email (optional):
 
 	mail.Send()
+	print("Mail has been sent")
 
 if __name__ == "__main__":
 	getDataFrame()
